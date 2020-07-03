@@ -29,6 +29,8 @@ function setup() {
     particle = new Particle(fov);
     particle.update(sceneW / 2, sceneH / 2);
 
+    alert("Use WASD to move\n Click and drag to create aditional walls!")
+
 }
 
 function mousePressed() {
@@ -54,8 +56,8 @@ function draw() {
 
     if (keyIsDown(65)) particle.rotate(-0.1); //left
     if (keyIsDown(68)) particle.rotate(0.1); //right
-    if (keyIsDown(87)) particle.move(4); //up
-    if (keyIsDown(83)) particle.move(-4); //down
+    if (keyIsDown(87)) particle.move(6); //up
+    if (keyIsDown(83)) particle.move(-6); //down
 
     background(0);
     // clear();
