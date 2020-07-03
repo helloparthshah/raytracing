@@ -52,6 +52,7 @@ class Particle {
 
             }
             if (closest) {
+                stroke(150, 0, 0);
                 line(this.pos.x, this.pos.y, closest.x, closest.y);
             }
             scene[i] = rec;

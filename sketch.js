@@ -3,6 +3,11 @@ let ray;
 let particle;
 let fov = 60;
 
+let sx;
+let sy;
+let fx;
+let fy;
+
 const sceneW = window.innerWidth / 2;
 const sceneH = window.innerHeight;
 
@@ -25,6 +30,24 @@ function setup() {
     particle.update(sceneW / 2, sceneH / 2);
 }
 
+function mousePressed() {
+    sx = mouseX;
+    sy = mouseY;
+}
+
+function mouseDragged() {
+    fx = mouseX;
+    fy = mouseY;
+    // walls.push(new Wall(sx, sy, fx, fy));
+
+}
+
+function mouseReleased() {
+    walls.push(new Wall(sx, sy, fx, fy));
+    sx = fx;
+    sy = fy;
+}
+
 function draw() {
 
     if (keyIsDown(65)) particle.rotate(-0.1); //left
@@ -37,6 +60,12 @@ function draw() {
         wall.show();
     // particle.update(mouseX, mouseY);
     particle.show();
+
+    ellipse(mouseX, mouseY, 8);
+    stroke(150);
+    push();
+    line(sx, sy, fx, fy);
+    pop();
 
     const scene = particle.look(walls);
     const w = sceneW / scene.length;
